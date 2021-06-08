@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using helloWebapp.Models;
+using helloWebapp.ViewModels;
 
 namespace helloWebapp.Controllers
 {
@@ -17,13 +18,25 @@ namespace helloWebapp.Controllers
             var movie = new Movie()
             {
                 Name = "Sherek"
+            };
+            var customers = new List<Customer>
+            {
+                new Customer{ Name="Custome1"},
+                new Customer{Name="Customer2"}
+            };
+
+            var viewModel = new RandomMovieViewModel()
+            {
+                Movie = movie,
+                Customers = customers
 
             };
-            return View(movie);
+
+            return View(viewModel);
             //return Content("HELLO ASHRAF");
             //to rederect to any page i need to write 
             //return RedirectToAction("Page","Controller");
-            //  return RedirectToAction("Index", "Home");
+            //return RedirectToAction("Index", "Home");
         }
         public ActionResult Edit(int id) {
             return Content("id=" + id);

@@ -1,8 +1,25 @@
-﻿@model helloWebapp.Models.Movie
+﻿@model helloWebapp.ViewModels.RandomMovieViewModel
 @{
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Name</h2>
+<h2>@Model.Movie.Name</h2>
+@{ 
+    var className = Model.Customers.Count > 0 ? "Popular" : null;
+}
+<h1 class="@className">@Model.Movie.Name</h1>
 
+@if(Model.Customers.Count==0){
+<p>NoOne ranted this movie</p>
+}
+else{
+<ul>
+    @foreach (var customer in Model.Customers)
+    {
+        <li>@customer.Name</li>
+   
+
+    }
+</ul>
+}
