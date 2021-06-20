@@ -9,6 +9,6 @@ namespace helloWebapp.ViewModels
     public class RandomMovieViewModel
     {
         public Movie Movie { get; set; }
-        public List<Customer> Customers { get; set; }
+        public List<Models.Customer> Customers { get; set; }
     }
 }

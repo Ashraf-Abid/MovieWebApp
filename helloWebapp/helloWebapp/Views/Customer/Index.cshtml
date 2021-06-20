@@ -1,0 +1,28 @@
+﻿@model IEnumerable<helloWebapp.Models.Customer>
+@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Customer</h1>
+@if (!Model.Any())
+{
+<p>No Customer YET</p>
+}
+else {
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>customer</th>
+            <th>Discount Rate</th>
+        </tr>
+        @foreach (var customer in Model) {
+    <tr>
+        <td>@Html.ActionLink(customer.Name,"Details","Customer",new {id=customer.Id},null)</td>
+        <td>@customer.MembershipType.DiscountRate</td>
+
+
+
+    </tr>
+        }
+
+    </table>
+}
