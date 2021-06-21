@@ -3,7 +3,18 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Details</h2>
-<h1>@Model.Name</h1>
+<li>
+    <ul>
+        @Model.Name
+    </ul>
+    <ul>
+        @Model.BirthDate
+    </ul>
+    <ul>
+        @Model.MembershipType.Name
+    </ul>
+</li>
+
+
 
