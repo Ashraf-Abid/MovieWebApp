@@ -215,9 +215,18 @@
     <Compile Include="Migrations\202106211641192_updatingcustomerwithbirthdate.Designer.cs">
       <DependentUpon>202106211641192_updatingcustomerwithbirthdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106241831499_movieMigration.cs" />
+    <Compile Include="Migrations\202106241831499_movieMigration.Designer.cs">
+      <DependentUpon>202106241831499_movieMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106241839272_populatinggenrestable.cs" />
+    <Compile Include="Migrations\202106241839272_populatinggenrestable.Designer.cs">
+      <DependentUpon>202106241839272_populatinggenrestable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -290,6 +299,7 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -337,6 +347,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106211641192_updatingcustomerwithbirthdate.resx">
       <DependentUpon>202106211641192_updatingcustomerwithbirthdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106241831499_movieMigration.resx">
+      <DependentUpon>202106241831499_movieMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106241839272_populatinggenrestable.resx">
+      <DependentUpon>202106241839272_populatinggenrestable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

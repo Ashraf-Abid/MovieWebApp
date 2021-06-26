@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using helloWebapp.Models;
 using helloWebapp.ViewModels;
+using System.Data.Entity;
 
 namespace helloWebapp.Controllers
 {
@@ -13,13 +14,30 @@ namespace helloWebapp.Controllers
         // GET: Movies
         //here it is returning Action result,though it is returning a view. But here we have written ActionResult.
         //We can also write it as public ViewResult 
+        private ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
         public ViewResult Index()
         {
-            var movie = getMovie();
-            return View(movie);
+            var movies = _context.movies.Include(c => c.Genre).ToList();
+            return View(movies);
         
         }
-        private IEnumerable<Movie> getMovie() { 
+        public ActionResult Details(int id) {
+            var movie = _context.movies.Include(c => c.Genre).SingleOrDefault(c => c.ID == id);
+            if (movie == null) return HttpNotFound();
+
+            return View(movie);
+        }
+        /*private IEnumerable<Movie> getMovie() { 
         return new List<Movie> {
                 new Movie {Name="Bedona",ID=1 },
                 new Movie { Name="jontrona",ID=2}
@@ -58,6 +76,6 @@ namespace helloWebapp.Controllers
         public ActionResult ByReleaseDate(int year,int month) {
             return Content(year+"/"+month);
         }         
-        
+        */
     }
 }
