@@ -21,8 +21,26 @@ namespace helloWebapp.Controllers
         {
             _context.Dispose();
         }
+        public ActionResult New() {
+            var membershipTypes = _context.membershiptypes.ToList();
+            var vewmodel = new NewCustomerViewModel
+            {
+                MembershipTypes = membershipTypes,
+  
+
+            };
+
+             
+            return View(vewmodel);
+        }
+        [HttpPost]
+        public ActionResult Create(Customer customer) {
+            _context.customers.Add(customer);
+            _context.SaveChanges();
 
 
+            return RedirectToAction("Index","Customer");
+        }
         public ViewResult Index() {
             var customers = _context.customers.Include(c=>c.MembershipType).ToList();
             return View(customers);
