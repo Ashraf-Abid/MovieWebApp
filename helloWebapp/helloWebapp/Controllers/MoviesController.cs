@@ -31,6 +31,32 @@ namespace helloWebapp.Controllers
             return View(movies);
         
         }
+        public ActionResult New() {
+            var GenreTypes = _context.genres.ToList();
+            var viewModel = new MovieFormViewModel
+            {
+                genres = GenreTypes,
+
+            };
+            return View(viewModel);
+        }
+        [HttpPost]
+        public ActionResult Create(Movie movie) {
+            // _context.movies.Add(movie.modelView);
+            /*var movieInDb = _context.movies.Single(m => m.ID == movie.ID);
+            movieInDb.Name = movie.Name;
+            movieInDb.GenreId = movie.GenreId;
+            movieInDb.NumberInStock = movie.NumberInStock;
+            movieInDb.ReleaseDate = movie.ReleaseDate;
+            _context.SaveChanges();
+           */
+            movie.DateAdded = DateTime.Now;
+           // movie.ReleaseDate = DateTime.Now.AddDays(-5);
+
+            _context.movies.Add(movie);
+             _context.SaveChanges();
+            return RedirectToAction("Index", "Movies");
+        }
         public ActionResult Details(int id) {
             var movie = _context.movies.Include(c => c.Genre).SingleOrDefault(c => c.ID == id);
             if (movie == null) return HttpNotFound();

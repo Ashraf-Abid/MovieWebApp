@@ -3,6 +3,10 @@
     ViewBag.Title = "Movie";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h1></h1>
+<p>
+    @Html.ActionLink("New Movie", "New", "Movies", null, new { @class = "btn btn-primary" })
+</p>
 <table class="table table-bordered table-hover">
     <h1>MOVIE</h1>
     @foreach (var movie in Model)

@@ -22,6 +22,7 @@ namespace helloWebapp.Models
     {
         public DbSet<Customer> customers { get; set; }
         public DbSet<Movie> movies { get; set; }
+        public DbSet<Genre> genres { get; set; }
         public DbSet<MembershipType>  membershiptypes {get;set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
