@@ -57,6 +57,29 @@ namespace helloWebapp.Controllers
              _context.SaveChanges();
             return RedirectToAction("Index", "Movies");
         }
+        public ActionResult New2(int id) {
+            var Movie = _context.movies.SingleOrDefault(c => c.ID == id);
+            var viewModel = new MovieFormViewModel
+            {
+                movie = Movie,
+                genres = _context.genres.ToList()
+              
+            };
+            return View(viewModel);
+        }
+        [HttpPost]
+        public ActionResult Update(Movie movie)
+        {
+            var movieInDb = _context.movies.Single(c => c.ID == movie.ID);
+            movieInDb.Name = movie.Name;
+            movieInDb.GenreId = movie.GenreId;
+            movieInDb.NumberInStock = movie.NumberInStock;
+            movieInDb.ReleaseDate = movie.ReleaseDate;
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Movies");
+
+        }
+
         public ActionResult Details(int id) {
             var movie = _context.movies.Include(c => c.Genre).SingleOrDefault(c => c.ID == id);
             if (movie == null) return HttpNotFound();

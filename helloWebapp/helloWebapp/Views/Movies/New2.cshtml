@@ -1,11 +1,11 @@
 ﻿@model helloWebapp.ViewModels.MovieFormViewModel
 @{
-    ViewBag.Title = "New Movie";
+    ViewBag.Title = "New2";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Movie</h2>
-@using (Html.BeginForm("Create", "Movies"))
+<h2>Edit Movie</h2>
+@using (Html.BeginForm("Update", "Movies"))
 {
     <div class="form-group ">
         @Html.LabelFor(m => m.movie.Name)
@@ -25,6 +25,9 @@
         @Html.DropDownListFor(m => m.movie.GenreId, new SelectList(Model.genres, "Id", "Name"), "Select Genre", new { @class = "form-control" })
     </div>
     @Html.HiddenFor(m => m.movie.ID);
-    <button class="btn btn-primary" type="submit">Save</button>
 
+    <button class="btn btn-primary" type="submit">Update</button>
 }
+
+
+
