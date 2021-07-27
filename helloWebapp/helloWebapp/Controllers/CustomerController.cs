@@ -45,6 +45,15 @@ namespace helloWebapp.Controllers
 
         [HttpPost]
         public ActionResult Save(Customer customer) {
+            if (!ModelState.IsValid) {
+                var viewModel = new CustomerformViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.membershiptypes.ToList()
+                };
+                return View("CustomerForm",viewModel);
+            
+            }
             if (customer.Id == 0)
             {
                 _context.customers.Add(customer);

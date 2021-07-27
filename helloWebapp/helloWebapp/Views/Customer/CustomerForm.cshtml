@@ -10,11 +10,13 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Customer.Name)
         @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.Name)
 
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Customer.BirthDate)
         @Html.TextBoxFor(m => m.Customer.BirthDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.BirthDate)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Customer.MembershipType)
@@ -24,10 +26,12 @@
     <div class="checkbox">
         <label>
             @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribed To newsletter?
-
         </label>
     </div>
     @Html.HiddenFor(m => m.Customer.Id);
 
     <button type="submit" class="btn btn-primary">Submit</button>
+}
+@section scripts{
+  @Scripts.Render("~/bundles/jqueryval")  
 }

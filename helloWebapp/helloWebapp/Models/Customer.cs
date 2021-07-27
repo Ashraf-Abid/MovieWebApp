@@ -13,7 +13,7 @@ namespace helloWebapp.Models
         [StringLength(255)]
         public string Name  { get; set; }
         [Display(Name = "BirthDay")]
-
+        [Min18YearsIfAMember]
         public string BirthDate { get; set; }
         public bool IsSubscribedToNewsletter { get; set; }
         [Display(Name ="MembershipType")]
